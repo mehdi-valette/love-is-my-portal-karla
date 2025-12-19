@@ -2,7 +2,6 @@
 
 <head>
   <meta charset="utf-8">
-  <base href="/B/">
 
   <style>
     :root {
@@ -10,6 +9,30 @@
       --header-top-color-dark: #c27f90;
       --header-bottom-color-dark: #a44a5c;
       --header-bottom-color-light: #a54e61;
+    }
+
+    .about-author {
+      background-color: var(--header-top-color-dark);
+      padding: 5rem 0;
+
+      .content {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+
+        section {
+          width: 30rem;
+        }
+
+        img {
+          width: 300px;
+          object-fit: cover;
+          border-radius: 0.5rem;
+          box-shadow: 0 0 5px white;
+        }
+      }
     }
 
     .blurer {
@@ -54,30 +77,6 @@
       &:hover {
         background-color: hsl(351, 100%, 80%);
         transform: scale(1.01, 1.1);
-      }
-    }
-
-    .about-author {
-      background-color: var(--header-top-color-dark);
-      padding: 5rem 0;
-
-      .content {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        gap: 3rem;
-        flex-wrap: wrap;
-
-        section {
-          width: 30rem;
-        }
-
-        img {
-          width: 300px;
-          object-fit: cover;
-          border-radius: 0.5rem;
-          box-shadow: 0 0 5px white;
-        }
       }
     }
 
@@ -130,11 +129,19 @@
       padding: 5rem 0;
 
       .content {
-        width: 30rem;
         margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        justify-content: center;
+        gap: 3rem;
 
         img {
-          width: 100%;
+          height: 600px;
+        }
+
+        .description {
+          width: 30rem;
         }
       }
     }
@@ -268,15 +275,15 @@
 
       .buy {
         .content {
-          width: 90%;
+          .description {
+            width: 90%;
+          }
         }
       }
 
 
       .header {
-
         img {
-          width: 90%;
           height: auto;
         }
 
@@ -303,7 +310,7 @@
     <div class="bottom">&nbsp;</div>
 
     <div class="content">
-      <img src="image/book.png" alt="image du livre" />
+      <img src="/image/book.png" alt="image du livre" />
 
       <section>
         <h1>
@@ -394,7 +401,7 @@
     </h2>
 
     <div class="content">
-      <img src="image/a-propos.png" alt="photo de Karla">
+      <img src="/image/a-propos.png" alt="photo de Karla">
       <section>
         <h3>Karla Alves</h3>
 
@@ -428,7 +435,7 @@
           himenaeos.
         </p>
         <div class="author">
-          <img src="image/karla.png" alt="photo de Tiago">
+          <img src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -441,7 +448,7 @@
           himenaeos.
         </p>
         <div class="author">
-          <img src="image/karla.png" alt="photo de Tiago">
+          <img src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -454,7 +461,7 @@
           himenaeos.
         </p>
         <div class="author">
-          <img src="image/karla.png" alt="photo de Tiago">
+          <img src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -467,7 +474,7 @@
           himenaeos.
         </p>
         <div class="author">
-          <img src="image/karla.png" alt="photo de Tiago">
+          <img src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -480,7 +487,7 @@
           himenaeos.
         </p>
         <div class="author">
-          <img src="image/karla.png" alt="photo de Tiago">
+          <img src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -493,7 +500,7 @@
           himenaeos.
         </p>
         <div class="author">
-          <img src="image/karla.png" alt="photo de Tiago">
+          <img src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -765,19 +772,20 @@
     <h2>Acheter le livre</h2>
 
     <div class="content">
-      <p>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-        sed
-        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-        takimata sanctus est Lorem ipsum dolor sit amet.
-      </p>
+      <img src="/image/book.png" alt="image du livre">
+      <div class="description">
+        <p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+          clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+          consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed
+          diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+          takimata sanctus est Lorem ipsum dolor sit amet.
+        </p>
 
-      <img src="image/book.png" alt="image du livre">
-
-      <button class="button">Commande maintenant</button>
+        <button class="button">Commande maintenant</button>
+      </div>
     </div>
   </div>
 </body>

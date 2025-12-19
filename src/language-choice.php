@@ -2,7 +2,6 @@
 
 <head>
   <meta charset="utf-8">
-  <base href="/B/">
 
   <style>
     :root {
@@ -67,12 +66,12 @@
 
     <div class="languages">
       <a class="language" href="pt">
-        <img src="image/book.png" />
+        <img src="/image/book.png" />
         Português
       </a>
 
       <a class="language" href="fr">
-        <img src="image/book.png" />
+        <img src="/image/book.png" />
         Français
       </a>
     </div>

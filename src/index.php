@@ -1,19 +1,32 @@
 <?php
-if (preg_match('/\.(?:png|jpg|jpeg|gif)$/', $_SERVER["REQUEST_URI"])) {
-  $file = fopen('php://stdout', 'w');
-  fputs($file, $_SERVER["REQUEST_URI"]);
-  fclose($file);
+$domain = "main";
+$lang = "";
+bindtextdomain($domain, realpath("./") . DIRECTORY_SEPARATOR . "locale");
+textdomain($domain);
 
-  return false; // serve the resource as-is
+$pathVariables = explode("/", $_SERVER["REQUEST_URI"]);
+
+foreach ($pathVariables as $variable) {
+  $lang = match ($variable) {
+    "fr" => "fr_FR.utf8",
+    "pt" => "pt_PT.utf8",
+    default => "",
+  };
+
+  if ($lang !== "") {
+    break;
+  }
 }
 
-$version = str_replace("/", "", $_SERVER["REQUEST_URI"]);
-
-switch ($version) {
-  case "A":
-    require_once "A/index.php";
-    break;
-  case "B":
-    require_once "B/index.php";
-    break;
+if ($lang == "") {
+  include_once "./language-choice.php";
+  exit();
 }
+
+if (!setlocale(LC_ALL, $lang)) {
+  throw new Exception(message: "Locale not supported " . $lang);
+}
+
+include_once "./landing-page.php";
+
+?>
