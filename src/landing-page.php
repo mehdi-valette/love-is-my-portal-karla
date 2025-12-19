@@ -1,3 +1,10 @@
+<?php
+$langLink = match ($lang) {
+  "pt" => "fr",
+  "fr" => "pt",
+}
+  ?>
+
 <!DOCTYPE html>
 
 <head>
@@ -9,6 +16,7 @@
       --header-top-color-dark: #c27f90;
       --header-bottom-color-dark: #a44a5c;
       --header-bottom-color-light: #a54e61;
+      --blurer-height: 3rem;
     }
 
     .about-author {
@@ -25,22 +33,14 @@
         section {
           width: 30rem;
         }
-
-        img {
-          width: 300px;
-          object-fit: cover;
-          border-radius: 0.5rem;
-          box-shadow: 0 0 5px white;
-        }
       }
     }
 
     .blurer {
-      --height: 3rem;
       position: sticky;
-      height: var(--height);
+      height: var(--blurer-height);
       background-color: rgb(255 255 255 / 0.3);
-      top: calc(100vh - var(--height));
+      top: calc(100vh - var(--blurer-height));
       width: 100%;
       z-index: 10;
       backdrop-filter: blur(3px);
@@ -49,11 +49,8 @@
     body {
       padding: 0;
       margin: 0;
-      margin-top: -5rem;
       background-color: var(--header-top-color-dark);
-      background-attachment: fixed;
-      background-size: cover;
-      backdrop-filter: blur(3px);
+      margin-top: calc(var(--blurer-height) * -1);
     }
 
     .button {
@@ -136,10 +133,6 @@
         justify-content: center;
         gap: 3rem;
 
-        img {
-          height: 600px;
-        }
-
         .description {
           width: 30rem;
         }
@@ -156,6 +149,16 @@
       background-image: radial-gradient(ellipse at top, var(--header-top-color-dark) 50%, var(--header-top-color-light) 75%);
       padding-top: 10rem;
       position: relative;
+
+      .language {
+        position: absolute;
+        top: 1rem;
+        justify-self: center;
+        left: 50%;
+        transform: translateX(-50%);
+        color: black;
+        text-decoration: none;
+      }
 
       .bottom {
         position: absolute;
@@ -174,10 +177,6 @@
         gap: 3rem;
         align-items: start;
         justify-content: center;
-      }
-
-      img {
-        height: 600px;
       }
 
       h1 {
@@ -210,6 +209,20 @@
       padding: 0;
     }
 
+    img {
+      width: 400px;
+
+      &.boxed {
+        width: 300px;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 5px white;
+      }
+
+      &.miniature {
+        width: 60px;
+      }
+    }
+
     p {
       text-align: justify;
     }
@@ -237,10 +250,6 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-
-            img {
-              height: 60px;
-            }
           }
 
         }
@@ -252,10 +261,6 @@
 
         .content {
           section {
-            width: 90%;
-          }
-
-          img {
             width: 90%;
           }
         }
@@ -281,12 +286,7 @@
         }
       }
 
-
       .header {
-        img {
-          height: auto;
-        }
-
         .content {
           flex-direction: column;
           align-items: center;
@@ -298,6 +298,11 @@
           width: 90%;
         }
       }
+
+      img,
+      img.boxed {
+        width: 90%;
+      }
     }
   </style>
 
@@ -307,7 +312,10 @@
   <div class="blurer">&nbsp;</div>
 
   <div class="header">
+
     <div class="bottom">&nbsp;</div>
+
+    <a class="language" href="/<?= $langLink ?>"><?= _("Aceda ao site em português") ?></a>
 
     <div class="content">
       <img src="/image/book.png" alt="image du livre" />
@@ -401,7 +409,7 @@
     </h2>
 
     <div class="content">
-      <img src="/image/a-propos.png" alt="photo de Karla">
+      <img src="/image/a-propos.png" alt="photo de Karla" class="boxed">
       <section>
         <h3>Karla Alves</h3>
 
@@ -435,7 +443,7 @@
           himenaeos.
         </p>
         <div class="author">
-          <img src="/image/karla.png" alt="photo de Tiago">
+          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -448,7 +456,7 @@
           himenaeos.
         </p>
         <div class="author">
-          <img src="/image/karla.png" alt="photo de Tiago">
+          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -461,7 +469,7 @@
           himenaeos.
         </p>
         <div class="author">
-          <img src="/image/karla.png" alt="photo de Tiago">
+          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -474,7 +482,7 @@
           himenaeos.
         </p>
         <div class="author">
-          <img src="/image/karla.png" alt="photo de Tiago">
+          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -487,7 +495,7 @@
           himenaeos.
         </p>
         <div class="author">
-          <img src="/image/karla.png" alt="photo de Tiago">
+          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -500,7 +508,7 @@
           himenaeos.
         </p>
         <div class="author">
-          <img src="/image/karla.png" alt="photo de Tiago">
+          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>

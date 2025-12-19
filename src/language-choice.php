@@ -12,6 +12,8 @@
 
     body {
       min-height: 100vh;
+      padding: 0;
+      margin: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -51,9 +53,21 @@
       text-align: center;
     }
 
+    html {
+      padding: 0;
+      margin: 0;
+    }
+
     @media all and (max-width: 1000px) and (orientation: portrait) {
       .languages {
         flex-direction: column;
+
+        .language {
+          img {
+            height: 600px;
+            width: auto;
+          }
+        }
       }
     }
   </style>
@@ -77,39 +91,3 @@
     </div>
   </div>
 </body>
-
-
-<!-- Collaborateur-trice technique en informatique et systèmes de communication
-
-9663
-
-Pas d'expérience pour gestion de parc serveur, mais très bonnes connaissances Linux et Kubernetes (formations Linux
-Foundation)
-Forte envie de m'orienter d'avantage vers l'administration système.
-
-Entrée en fonction en Juillet, existe-t-il des formations/certificats que je puisse suivre d'ici là ? Conditionnelles à
-l'emploi.
-
-SLURM, libreNMS, Proxmox, OpenStack, Kubernetes
-
-Tendance à mettre en place de nouvelles stack.
-
-Passage à la retraite fin du mois d'août.
-
-30-40 machines
-
-"bac à sable"
-Monter les clusters, les démonter, etc.
-Machines à jour, mémoire, maintenues, logiciels compatibles.
-VMWare, gérer cette infrastructure
-
-"opérationnel"
-Projets de recherche, GPU, entraînement modèles IA
-
-Mutualiser l'utilisation de ces machines.
-
-Jeremy varto
-Code, présentation de code,
-
-2026 - 5 janvier 15h30-15h00
-8 janvier -->

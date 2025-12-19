@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-12-18 09:29+0100\n"
-"PO-Revision-Date: 2025-12-18 09:34+0100\n"
+"POT-Creation-Date: 2025-12-19 11:45+0100\n"
+"PO-Revision-Date: 2025-12-19 11:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_PT\n"
@@ -13,6 +13,137 @@ msgstr ""
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: index.php:246
+#: landing-page.php:318
+msgid "Aceda ao site em português"
+msgstr "Naviguer vers le site en français"
+
+#: landing-page.php:327
 msgid "L'amour est Ton Portail"
 msgstr "O amor é o teu portal"
+
+#: landing-page.php:328
+msgid "par Karla Alves"
+msgstr ""
+
+#: landing-page.php:332
+msgid "TOUTES NOUS PORTONS UNE HISTOIRE UNIQUE QUI NOUS REND SPÉCIALES."
+msgstr ""
+
+#: landing-page.php:334
+msgid ""
+"Ce livre est un témoignage de vie, de transformation et de renaissance.\n"
+"            Avec délicatesse et authenticité, je partage mon parcours : "
+"d’une enfance marquée par la douleur à la\n"
+"            reconnexion avec l’amour de soi."
+msgstr ""
+
+#: landing-page.php:339
+msgid ""
+"Ce sont des pages vivantes, où défilent les amours qui m’ont façonnée, les "
+"blessures qui m’ont éveillée, et\n"
+"            le portail sacré de la maternité – où je suis renaît femme et où "
+"j’ai enfin embrassé mon enfant intérieur.\n"
+"            Je parle d’émotions profondes, de la danse entre le féminin et "
+"le masculin, de la spiritualité qui nourrit,\n"
+"            et de la beauté de vivre dans la présence. La nutrition apparaît "
+"ici comme une médecine intuitive – une\n"
+"            façon de nourrir le corps, le cœur et la vie, avec intention, "
+"affection et conscience."
+msgstr ""
+
+#: landing-page.php:346
+msgid ""
+"J’inclus également des recettes simples et pleines d’âme, qui ont accompagné "
+"mon processus de guérison."
+msgstr ""
+
+#: landing-page.php:349
+msgid "Ce livre est une invitation :"
+msgstr ""
+
+#: landing-page.php:352
+msgid "À briser les cycles"
+msgstr ""
+
+#: landing-page.php:354
+msgid "À écouter ta voix intérieure."
+msgstr ""
+
+#: landing-page.php:356
+msgid "À te guérir de l’intérieur vers l’extérieur."
+msgstr ""
+
+#: landing-page.php:358
+msgid "À revenir à l’essence et à allumer ta propre lumière."
+msgstr ""
+
+#: landing-page.php:361
+msgid ""
+"Car la véritable transformation commence au moment où nous choisissons de "
+"nous aimer – entières,\n"
+"            imparfaites,\n"
+"            réelles."
+msgstr ""
+
+#: landing-page.php:367
+msgid "Commande maintenant"
+msgstr ""
+
+#: landing-page.php:373
+msgid "Contenu du livre"
+msgstr ""
+
+#: landing-page.php:390
+msgid "Des recettes de cuisine saines : Nourrir est une forme d’amour."
+msgstr ""
+
+#: landing-page.php:393
+msgid ""
+"C’est écouter le corps avec présence, prendre soin avec intention, offrir "
+"des aliments qui réconfortent non\n"
+"          seulement l’estomac, mais aussi le cœur."
+msgstr ""
+
+#: landing-page.php:397
+msgid ""
+"Dans ce chapitre, je t’ouvre la porte de ma cuisine, je t’invite à entrer et "
+"je partage avec toi quelques-unes\n"
+"          de mes recettes préférées : simples, intuitives, préparées avec "
+"des ingrédients naturels et sans gluten ni\n"
+"          lactose. Ce sont des plats nés de moments de soin, d’écoute et de "
+"reconnexion avec moi-même. Chaque recette\n"
+"          est une invitation à ralentir, à revenir dans ta cuisine comme un "
+"espace sacré, où l’aliment se transforme en\n"
+"          geste d’affection, en rituel de guérison et en expression d’amour "
+"propre. Cuisine avec calme. Ressens avec le\n"
+"          cœur. Sers avec l’âme. Déguste avec amour."
+msgstr ""
+
+#: landing-page.php:410
+msgid "À propos de l'autrice"
+msgstr ""
+
+#: landing-page.php:419
+msgid ""
+"Diplômée en médecine dentaire, elle prend soin des sourires depuis plus "
+"d’une décennie. Mais c’est dans le\n"
+"          silence du corps et l’écoute de l’âme qu’elle a appris à guérir "
+"ses blessures les plus anciennes. Après avoir\n"
+"          vécu une enfance marquée par des défis, elle a choisi de briser "
+"les cycles et de créer des racines en\n"
+"          elle-même. Son parcours allie corps, âme et esprit, avec des "
+"formations en Reiki, Ayurveda, nutrition\n"
+"          intégrative et développement personnel."
+msgstr ""
+
+#: landing-page.php:426
+msgid ""
+"Passionnée par la nature, par la nutrition consciente comme geste d’amour, "
+"par la beauté sous toutes ses\n"
+"          formes et par les émotions qui nous habitent, elle a trouvé dans "
+"le chemin de la maternité son plus grand\n"
+"          miroir et sa transformation la plus profonde. Elle croit que la "
+"guérison s’épanouit dans le jardin secret de\n"
+"          l’amour de soi, où chaque femme est à la fois la fleur et la "
+"graine de sa propre transformation."
+msgstr ""
