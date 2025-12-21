@@ -70,6 +70,7 @@ $langLink = match ($lang) {
       transition: .5s linear;
       width: 100%;
       margin: 3rem 0;
+      text-align: center;
 
       &:hover {
         background-color: hsl(351, 100%, 80%);
@@ -362,7 +363,7 @@ $langLink = match ($lang) {
           </p>
         </div>
 
-        <button class="button"><?= _("Commande maintenant") ?></button>
+        <a class="button" href="<?= $conf->get_payment_link($lang) ?>"><?= _("Commande maintenant") ?></a>
       </section>
     </div>
   </div>
@@ -792,7 +793,7 @@ $langLink = match ($lang) {
           takimata sanctus est Lorem ipsum dolor sit amet.
         </p>
 
-        <button class="button">Commande maintenant</button>
+        <a class="button" href="<?= $conf->get_payment_link($lang) ?>"><?= _("Commande maintenant") ?></a>
       </div>
     </div>
   </div>

@@ -9,3 +9,4 @@ services:
     command: php -S 0.0.0.0:8080
     volumes:
       - ./src:/usr/src/karla
+      - ./conf/karla.conf:/etc/karla.conf
