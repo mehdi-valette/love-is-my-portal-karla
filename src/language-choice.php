@@ -79,12 +79,12 @@
     <h1>Choisis ta langue</h1>
 
     <div class="languages">
-      <a class="language" href="pt">
+      <a class="language" href="/pt">
         <img src="/image/book.png" />
         Português
       </a>
 
-      <a class="language" href="fr">
+      <a class="language" href="/fr">
         <img src="/image/book.png" />
         Français
       </a>
