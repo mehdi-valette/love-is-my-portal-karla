@@ -21,6 +21,11 @@ jobs:
           cd src
           php -S 127.0.0.1:8080 -t public > server.log 2>&1 &
 
+      - name: show server logs
+        run: |
+          curl -f -s localhost:8080
+          cat server.log
+
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -30,11 +35,6 @@ jobs:
           cd test
           npm ci
           npx playwright install --with-deps
-
-      - name: show server logs
-        run: |
-          curl localhost:8080
-          cat server.log
 
       - name: Run Playwright tests
         run: |
