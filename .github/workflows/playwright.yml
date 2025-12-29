@@ -13,8 +13,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Start PHP server
-          run: |
-            php -S 127.0.0.1:8000 -t public > server.log 2>&1 &
+        run: |
+          php -S 127.0.0.1:8000 -t public > server.log 2>&1 &
 
       - uses: actions/setup-node@v4
         with:
@@ -28,7 +28,7 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test
-        
+
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
