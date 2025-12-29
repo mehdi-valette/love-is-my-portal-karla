@@ -10,6 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: add locales
+        run: |
+          sudo locale-gen fr_FR.utf8
+          sudo locale-gen pt_PT.utf8
+
       - name: inject karla.conf file
         run: |
           cat << EOF | sudo tee /etc/karla.conf > /dev/null
