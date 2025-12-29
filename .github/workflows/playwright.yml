@@ -21,9 +21,13 @@ jobs:
           cd src
           php -S 127.0.0.1:8080 -t public > /tmp/server.log 2>&1 &
 
-      - name: show server logs
+      - name: call server
         run: |
-          curl -f -s localhost:8080; echo "hello"; cat /tmp/server.log; echo "bye"
+          curl -f -s localhost:8080
+
+      - name: show server logs
+        if: always()
+        run: cat /tmp/server.log
 
       - uses: actions/setup-node@v4
         with:
