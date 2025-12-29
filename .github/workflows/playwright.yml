@@ -10,8 +10,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: whoami
+        run: whoami
+
+      - name: root whoami
+        run: sudo whoami
+
       - name: inject karla.conf file
-        run: echo ${{ secrets.KARLA_CONF }} > /etc/karla.conf
+        run: |
+          sudo su
+          cat << EOF > /etc/karla.conf
+          ${{ secrets.KARLA_CONF }}
+          EOF
+          exit
 
       - name: Start PHP server
         run: |
