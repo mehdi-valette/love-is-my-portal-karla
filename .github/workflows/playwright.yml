@@ -19,11 +19,11 @@ jobs:
       - name: Start PHP server
         run: |
           cd src
-          php -S 127.0.0.1:8080 -t public > /etc/server.log 2>&1 &
+          php -S 127.0.0.1:8080 -t public > /tmp/server.log 2>&1 &
 
       - name: show server logs
         run: |
-          curl -f -s localhost:8080; cat /etc/server.log
+          curl -f -s localhost:8080; cat /tmp/server.log
 
       - uses: actions/setup-node@v4
         with:
