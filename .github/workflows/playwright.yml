@@ -18,11 +18,9 @@ jobs:
 
       - name: inject karla.conf file
         run: |
-          sudo su
-          cat << EOF > /etc/karla.conf
+          cat << EOF > sudo tee /etc/karla.conf > /dev/null
           ${{ secrets.KARLA_CONF }}
           EOF
-          exit
 
       - name: Start PHP server
         run: |
