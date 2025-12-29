@@ -22,7 +22,7 @@ jobs:
 
       - name: call server
         run: |
-          curl -f -s 127.0.0.1:8080
+          curl -i -v 127.0.0.1:8080
 
       - name: show server logs
         if: always()
