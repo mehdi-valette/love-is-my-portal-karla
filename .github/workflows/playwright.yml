@@ -18,7 +18,7 @@ jobs:
 
       - name: inject karla.conf file
         run: |
-          cat << EOF > sudo tee /etc/karla.conf > /dev/null
+          cat << EOF | sudo tee /etc/karla.conf > /dev/null
           ${{ secrets.KARLA_CONF }}
           EOF
 
