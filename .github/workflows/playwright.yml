@@ -23,8 +23,7 @@ jobs:
 
       - name: show server logs
         run: |
-          curl -f -s localhost:8080
-          cat server.log
+          curl -f -s localhost:8080; cat server.log
 
       - uses: actions/setup-node@v4
         with:
