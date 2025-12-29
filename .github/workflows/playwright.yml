@@ -10,6 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: inject karla.conf file
+        run: echo ${{ secrets.KARLA_CONF }} > /etc/karla.conf
+
       - name: Start PHP server
         run: |
           cd src
