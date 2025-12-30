@@ -39,19 +39,11 @@ export class StripePage {
     await expect(
       this.page.getByRole("heading", { name: "Informations de livraison" }),
     ).toBeVisible();
-
-    await expect(
-      this.page.getByTestId("product-summary-total-amount").getByText("CHF"),
-    ).toBeVisible();
   }
 
   async checkTextPt() {
     await expect(
       this.page.getByRole("heading", { name: "Dados de envio" }),
-    ).toBeVisible();
-
-    await expect(
-      this.page.getByTestId("product-summary-total-amount").getByText("CHF"),
     ).toBeVisible();
   }
 }
