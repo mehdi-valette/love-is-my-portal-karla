@@ -1,7 +1,9 @@
 name: Playwright Tests
+
 on:
   push:
-    branches: [main, master]
+    branches: [main]
+
 jobs:
   test:
     timeout-minutes: 60
@@ -10,13 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: whoami
-        run: whoami
+      - name: Add locales
+        run: |
+          sudo locale-gen fr_FR.utf8
+          sudo locale-gen pt_PT.utf8
 
-      - name: root whoami
-        run: sudo whoami
-
-      - name: inject karla.conf file
+      - name: Inject karla.conf file
         run: |
           cat << EOF | sudo tee /etc/karla.conf > /dev/null
           ${{ secrets.KARLA_CONF }}
@@ -24,27 +25,63 @@ jobs:
 
       - name: Start PHP server
         run: |
-          cd src
-          php -S 127.0.0.1:8080 -t public > server.log 2>&1 &
+          php -S 127.0.0.1:8080 -t src > /tmp/server.log 2>&1 &
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
+      - name: Wait for site
+        run: |
+          for i in {1..10}; do
+            curl -sf http://localhost:8080 && exit 0
+            sleep 1
+          done
+          echo "Site did not start" && exit 1
 
       - name: Install Playwright Browsers
         run: |
-          cd test
+          cd e2e
           npm ci
           npx playwright install --with-deps
 
       - name: Run Playwright tests
         run: |
-          cd test
-          npx playwright test
+          cd e2e
+          npx playwright test --trace on
+
+      - name: show server logs
+        if: always()
+        run: cat /tmp/server.log
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
-          path: playwright-report/
+          path: test/playwright-report/
           retention-days: 30
+
+  publish:
+    needs: [test]
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Save the SSH private key
+        run: |
+          mkdir $HOME/.ssh
+          chmod 0700 $HOME/.ssh
+          cat << EOF > $HOME/.ssh/id_ed25519
+          ${{ secrets.SSH_PRIVATE_KEY }}
+          EOF
+          chmod 0600 $HOME/.ssh/id_ed25519
+
+      - name: Save the configuration file
+        run: |
+          cat << EOF > $HOME/karla.conf
+          ${{ secrets.KARLA_CONF }}
+          EOF
+
+      - name: Transfer configuration file
+        run: rsync --inplace -e 'ssh -o StrictHostKeyChecking=no' $HOME/karla.conf githubactions@83.228.216.33:/etc/
+
+      - name: Transfer website content
+        run: rsync --recursive -e 'ssh -o StrictHostKeyChecking=no' src/ githubactions@83.228.216.33:/var/www/html
