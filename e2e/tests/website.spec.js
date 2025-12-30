@@ -5,70 +5,41 @@ import { LandingPage } from "./pom/landing-page";
 import { StripePage } from "./pom/stripe";
 import { PaymentConfirmedPage } from "./pom/payment-confirmed";
 
-test("french website", async ({ page }) => {
-  const langChoice = new LanguageChoicePage(page);
-  const landing = new LandingPage(page);
-  const stripe = new StripePage(page);
-  const paymentConfirmed = new PaymentConfirmedPage(page);
+/** @type {["fr", "pt"]} */
+const languages = ["fr", "pt"];
 
-  await langChoice.goto();
-  await langChoice.checkText();
-  await langChoice.gotoFrench();
+languages.forEach((lang) => {
+  test(`Website ${lang}`, async ({ page }) => {
+    const langChoice = new LanguageChoicePage(page);
+    const landing = new LandingPage(page);
+    const stripe = new StripePage(page);
+    const paymentConfirmed = new PaymentConfirmedPage(page);
 
-  expect(landing.getLanguage()).toBe("fr");
-  await landing.checkText();
+    await langChoice.goto();
+    await langChoice.checkText();
+    await langChoice.gotoPage(lang);
 
-  const currentUrl = page.url();
+    expect(landing.getLanguage()).toBe(lang);
+    await landing.checkText();
 
-  await landing.gotoPaymentTopPage();
-  expect(stripe.getLanguage()).toBe("fr");
-  await stripe.checkText();
+    const currentUrl = page.url();
 
-  await page.goto(currentUrl);
+    await landing.gotoPaymentTopPage();
+    expect(stripe.getLanguage()).toBe(lang);
+    await stripe.checkText();
 
-  await landing.gotoPaymentBottomPage();
-  expect(stripe.getLanguage()).toBe("fr");
-  await stripe.checkText();
+    await page.goto(currentUrl);
 
-  await paymentConfirmed.goto("fr");
-  expect(paymentConfirmed.getLanguage()).toBe("fr");
-  await paymentConfirmed.checkText();
-  await paymentConfirmed.gotoLandingPage();
+    await landing.gotoPaymentBottomPage();
+    expect(stripe.getLanguage()).toBe(lang);
+    await stripe.checkText();
 
-  await landing.checkText();
-  expect(landing.getLanguage()).toBe("fr");
-});
+    await paymentConfirmed.goto(lang);
+    expect(paymentConfirmed.getLanguage()).toBe(lang);
+    await paymentConfirmed.checkText();
+    await paymentConfirmed.gotoLandingPage();
 
-test("portuguese website", async ({ page }) => {
-  const langChoice = new LanguageChoicePage(page);
-  const landing = new LandingPage(page);
-  const stripe = new StripePage(page);
-  const paymentConfirmed = new PaymentConfirmedPage(page);
-
-  await langChoice.goto();
-  await langChoice.checkText();
-  await langChoice.gotoPortuguese();
-
-  expect(landing.getLanguage()).toBe("pt");
-  await landing.checkText();
-
-  const currentUrl = page.url();
-
-  await landing.gotoPaymentTopPage();
-  expect(stripe.getLanguage()).toBe("pt");
-  await stripe.checkText();
-
-  await page.goto(currentUrl);
-
-  await landing.gotoPaymentBottomPage();
-  expect(stripe.getLanguage()).toBe("pt");
-  await stripe.checkText();
-
-  await paymentConfirmed.goto("pt");
-  expect(paymentConfirmed.getLanguage()).toBe("pt");
-  await paymentConfirmed.checkText();
-  await paymentConfirmed.gotoLandingPage();
-
-  await landing.checkText();
-  expect(landing.getLanguage()).toBe("pt");
+    await landing.checkText();
+    expect(landing.getLanguage()).toBe(lang);
+  });
 });

@@ -21,11 +21,19 @@ export class LanguageChoicePage {
     ).toBeVisible();
   }
 
-  async gotoFrench() {
-    await this.page.getByRole("link", { name: "Français" }).click();
-  }
+  /** @param {"fr" | "pt"} lang */
+  async gotoPage(lang) {
+    switch (lang) {
+      case "fr":
+        await this.page.getByRole("link", { name: "Français" }).click();
+        break;
 
-  async gotoPortuguese() {
-    await this.page.getByRole("link", { name: "Português" }).click();
+      case "pt":
+        await this.page.getByRole("link", { name: "Português" }).click();
+        break;
+
+      default:
+        throw new Error("language unknown");
+    }
   }
 }
