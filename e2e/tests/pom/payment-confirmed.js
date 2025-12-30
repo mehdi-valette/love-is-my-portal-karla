@@ -8,7 +8,7 @@ export class PaymentConfirmedPage {
     this.page = page;
   }
 
-  /** @param {string} lang */
+  /** @param {"fr" | "pt"} lang */
   async goto(lang) {
     await this.page.goto(`http://localhost:8080/${lang}/payment-confirmed`);
   }
