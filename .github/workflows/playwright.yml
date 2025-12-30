@@ -2,39 +2,10 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [development]
+    branches: [main]
 
 jobs:
-  publish:
-    timeout-minutes: 10
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Save the SSH private key
-        run: |
-          mkdir $HOME/.ssh
-          chmod 0700 $HOME/.ssh
-          cat << EOF > $HOME/.ssh/id_ed25519
-          ${{ secrets.SSH_PRIVATE_KEY }}
-          EOF
-          chmod 0600 $HOME/.ssh/id_ed25519
-
-      - name: Save the configuration file
-        run: |
-          cat << EOF > $HOME/karla.conf
-          ${{ secrets.KARLA_CONF }}
-          EOF
-
-      - name: Transfer configuration file
-        run: rsync --inplace -e 'ssh -o StrictHostKeyChecking=no' $HOME/karla.conf githubactions@83.228.216.33:/etc/
-
-      - name: Transfer website content
-        run: rsync --recursive -e 'ssh -o StrictHostKeyChecking=no' src/ githubactions@83.228.216.33:/var/www/html
-
   test:
-    needs: [publish]
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
@@ -85,3 +56,32 @@ jobs:
           name: playwright-report
           path: test/playwright-report/
           retention-days: 30
+
+  publish:
+    needs: [test]
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Save the SSH private key
+        run: |
+          mkdir $HOME/.ssh
+          chmod 0700 $HOME/.ssh
+          cat << EOF > $HOME/.ssh/id_ed25519
+          ${{ secrets.SSH_PRIVATE_KEY }}
+          EOF
+          chmod 0600 $HOME/.ssh/id_ed25519
+
+      - name: Save the configuration file
+        run: |
+          cat << EOF > $HOME/karla.conf
+          ${{ secrets.KARLA_CONF }}
+          EOF
+
+      - name: Transfer configuration file
+        run: rsync --inplace -e 'ssh -o StrictHostKeyChecking=no' $HOME/karla.conf githubactions@83.228.216.33:/etc/
+
+      - name: Transfer website content
+        run: rsync --recursive -e 'ssh -o StrictHostKeyChecking=no' src/ githubactions@83.228.216.33:/var/www/html
