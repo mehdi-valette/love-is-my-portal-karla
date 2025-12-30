@@ -31,7 +31,7 @@ jobs:
         run: rsync --inplace -e 'ssh -o StrictHostKeyChecking=no' $HOME/karla.conf githubactions@83.228.216.33:/etc/
 
       - name: Transfer website content
-        run: rsync --recursive -e 'ssh -o StrictHostKeyChecking=no' src githubactions@83.228.216.33:/var/www/html
+        run: rsync --recursive -e 'ssh -o StrictHostKeyChecking=no' src/ githubactions@83.228.216.33:/var/www/html
 
   test:
     needs: [publish]
