@@ -12,9 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install rsync
-        run: sudo apt-get install rsync
-
       - name: Save the SSH private key
         run: |
           mkdir $HOME/.ssh
@@ -68,13 +65,13 @@ jobs:
 
       - name: Install Playwright Browsers
         run: |
-          cd test
+          cd e2e
           npm ci
           npx playwright install --with-deps
 
       - name: Run Playwright tests
         run: |
-          cd test
+          cd e2e
           npx playwright test --trace on
 
       - name: show server logs
