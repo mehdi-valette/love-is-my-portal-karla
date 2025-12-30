@@ -12,9 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install rsync
+        run: sudo apt-get install rsync
+
       - name: Save the SSH private key
         run: |
           mkdir $HOME/.ssh
+          chmod 0700 $HOME/.ssh
           cat << EOF > $HOME/.ssh/id_ed25519
           ${{ secrets.SSH_PRIVATE_KEY }}
           EOF
