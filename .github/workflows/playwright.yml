@@ -18,6 +18,7 @@ jobs:
           cat << EOF > $HOME/.ssh/id_ed25519
           ${{ secrets.SSH_PRIVATE_KEY }}
           EOF
+          chmod 0600 $HOME/.ssh/id_ed25519
 
       - name: Save the configuration file
         run: |
