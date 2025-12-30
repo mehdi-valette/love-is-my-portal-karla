@@ -26,10 +26,10 @@ jobs:
           EOF
 
       - name: Transfer configuration file
-        run: rsync $HOME/karla.conf githubactions@83.228.216.33:/etc/
+        run: rsync -e 'ssh -o StrictHostKeyChecking=no' $HOME/karla.conf githubactions@83.228.216.33:/etc/
 
       - name: Transfer website content
-        run: rsync src githubactions@83.228.216.33:/var/www/html/
+        run: rsync -e 'ssh-o StrictHostKeyChecking=no' src githubactions@83.228.216.33:/var/www/html/
 
   test:
     timeout-minutes: 60
