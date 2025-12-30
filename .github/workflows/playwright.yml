@@ -1,8 +1,36 @@
 name: Playwright Tests
+
 on:
   push:
-    branches: [development]
+    branches: [main]
+
 jobs:
+  publish:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Save the SSH private key
+        run: |
+          mkdir $HOME/.ssh
+          cat << EOF > $HOME/.ssh/id_ed25519
+          ${{ secrets.SSH_PRIVATE_KEY }}
+          EOF
+
+      - name: Save the configuration file
+        run: |
+          cat << EOF > $HOME/karla.conf
+          ${{ secrets.KARLA_CONF }}
+          EOF
+
+      - name: Transfer configuration file
+        run: rsync $HOME/karla.conf githubactions@83.228.216.33:/etc/
+
+      - name: Transfer website content
+        run: rsync src githubactions@83.228.216.33:/var/www/html/
+
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
@@ -10,12 +38,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: add locales
+      - name: Add locales
         run: |
           sudo locale-gen fr_FR.utf8
           sudo locale-gen pt_PT.utf8
 
-      - name: inject karla.conf file
+      - name: Inject karla.conf file
         run: |
           cat << EOF | sudo tee /etc/karla.conf > /dev/null
           ${{ secrets.KARLA_CONF }}
@@ -32,10 +60,6 @@ jobs:
             sleep 1
           done
           echo "Site did not start" && exit 1
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
 
       - name: Install Playwright Browsers
         run: |
