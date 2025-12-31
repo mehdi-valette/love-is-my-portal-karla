@@ -11,13 +11,8 @@ export class LandingPage {
   getLanguage() {
     const paths = new URL(this.page.url()).pathname.split("/");
 
-    for (const path of paths) {
-      switch (path) {
-        case "fr":
-          return "fr";
-        case "pt":
-          return "pt";
-      }
+    if (["fr", "pt"].includes(paths[1])) {
+      return paths[1];
     }
 
     throw new Error(`lanaguage not found in ${paths}`);
