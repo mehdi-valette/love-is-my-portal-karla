@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 
+<html lang="<?= $lang ?>">
+
 <head>
   <meta charset="utf-8">
+
+  <title>
+    <?= _("L'amour est Ton Portail") ?>
+  </title>
 
   <style>
     :root {
@@ -32,8 +38,10 @@
   </style>
 </head>
 
-<body>
-  <img src="/image/check.svg">
+<body role="main">
+  <img src="/image/check.svg" alt="<?= _("Confirmation du paiement") ?>">
   <?= _("Merci pour votre achat ! Nous nous occupons de votre commande !") ?>
   <a href="<?= "/$lang" ?>"><?= _("Retour au site") ?></a>
 </body>
+
+</html>
