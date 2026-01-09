@@ -1,14 +1,20 @@
 <?php
-$langLink = match ($lang) {
+$otherLang = match ($lang) {
   "pt" => "fr",
   "fr" => "pt",
 }
   ?>
 
 <!DOCTYPE html>
+<html lang="<?= $lang ?>">
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>
+    <?= _("L'amour est Ton Portail") ?>
+  </title>
 
   <style>
     :root {
@@ -309,17 +315,17 @@ $langLink = match ($lang) {
 
 </head>
 
-<body>
+<body role="main">
   <div class="blurer">&nbsp;</div>
 
   <div class="header">
 
     <div class="bottom">&nbsp;</div>
 
-    <a class="language" href="/<?= $langLink ?>"><?= _("Aceda ao site em português") ?></a>
+    <a class="language" lang="<?= $otherLang ?>" href="/<?= $otherLang ?>"><?= _("Aceda ao site em português") ?></a>
 
     <div class="content">
-      <img src="/image/book.png" alt="image du livre" />
+      <img fetchpriority="high" src="/image/book-<?= $lang ?>.webp" alt="image du livre" />
 
       <section>
         <h1>
@@ -331,15 +337,15 @@ $langLink = match ($lang) {
           <h2><?= _("TOUTES NOUS PORTONS UNE HISTOIRE UNIQUE QUI NOUS REND SPÉCIALES.") ?></h2>
           <p>
             <?= _("Ce livre est un témoignage de vie, de transformation et de renaissance.
-            Avec délicatesse et authenticité, je partage mon parcours : d’une enfance marquée par la douleur à la
-            reconnexion avec l’amour de soi.") ?>
+              Avec délicatesse et authenticité, je partage mon parcours : d’une enfance marquée par la douleur à la
+              reconnexion avec l’amour de soi.") ?>
           </p>
           <p>
             <?= _("Ce sont des pages vivantes, où défilent les amours qui m’ont façonnée, les blessures qui m’ont éveillée, et
-            le portail sacré de la maternité – où je suis renaît femme et où j’ai enfin embrassé mon enfant intérieur.
-            Je parle d’émotions profondes, de la danse entre le féminin et le masculin, de la spiritualité qui nourrit,
-            et de la beauté de vivre dans la présence. La nutrition apparaît ici comme une médecine intuitive – une
-            façon de nourrir le corps, le cœur et la vie, avec intention, affection et conscience.") ?>
+              le portail sacré de la maternité – où je suis renaît femme et où j’ai enfin embrassé mon enfant intérieur.
+              Je parle d’émotions profondes, de la danse entre le féminin et le masculin, de la spiritualité qui nourrit,
+              et de la beauté de vivre dans la présence. La nutrition apparaît ici comme une médecine intuitive – une
+              façon de nourrir le corps, le cœur et la vie, avec intention, affection et conscience.") ?>
           </p>
           <p>
             <?= _("J’inclus également des recettes simples et pleines d’âme, qui ont accompagné mon processus de guérison.") ?>
@@ -358,8 +364,8 @@ $langLink = match ($lang) {
           </ul>
           <p>
             <?= _("Car la véritable transformation commence au moment où nous choisissons de nous aimer – entières,
-            imparfaites,
-            réelles.") ?>
+              imparfaites,
+              réelles.") ?>
           </p>
         </div>
 
@@ -390,15 +396,15 @@ $langLink = match ($lang) {
 
         <p>
           <?= _("C’est écouter le corps avec présence, prendre soin avec intention, offrir des aliments qui réconfortent non
-          seulement l’estomac, mais aussi le cœur.") ?>
+            seulement l’estomac, mais aussi le cœur.") ?>
         </p>
         <p>
           <?= _("Dans ce chapitre, je t’ouvre la porte de ma cuisine, je t’invite à entrer et je partage avec toi quelques-unes
-          de mes recettes préférées : simples, intuitives, préparées avec des ingrédients naturels et sans gluten ni
-          lactose. Ce sont des plats nés de moments de soin, d’écoute et de reconnexion avec moi-même. Chaque recette
-          est une invitation à ralentir, à revenir dans ta cuisine comme un espace sacré, où l’aliment se transforme en
-          geste d’affection, en rituel de guérison et en expression d’amour propre. Cuisine avec calme. Ressens avec le
-          cœur. Sers avec l’âme. Déguste avec amour.") ?>
+            de mes recettes préférées : simples, intuitives, préparées avec des ingrédients naturels et sans gluten ni
+            lactose. Ce sont des plats nés de moments de soin, d’écoute et de reconnexion avec moi-même. Chaque recette
+            est une invitation à ralentir, à revenir dans ta cuisine comme un espace sacré, où l’aliment se transforme en
+            geste d’affection, en rituel de guérison et en expression d’amour propre. Cuisine avec calme. Ressens avec le
+            cœur. Sers avec l’âme. Déguste avec amour.") ?>
         </p>
       </div>
     </div>
@@ -410,22 +416,22 @@ $langLink = match ($lang) {
     </h2>
 
     <div class="content">
-      <img src="/image/a-propos.png" alt="photo de Karla" class="boxed">
+      <img fetchpriority="high" src="/image/about.webp" alt="photo de Karla" class="boxed">
       <section>
         <h3>Karla Alves</h3>
 
         <p>
           <?= _("Diplômée en médecine dentaire, elle prend soin des sourires depuis plus d’une décennie. Mais c’est dans le
-          silence du corps et l’écoute de l’âme qu’elle a appris à guérir ses blessures les plus anciennes. Après avoir
-          vécu une enfance marquée par des défis, elle a choisi de briser les cycles et de créer des racines en
-          elle-même. Son parcours allie corps, âme et esprit, avec des formations en Reiki, Ayurveda, nutrition
-          intégrative et développement personnel.") ?>
+            silence du corps et l’écoute de l’âme qu’elle a appris à guérir ses blessures les plus anciennes. Après avoir
+            vécu une enfance marquée par des défis, elle a choisi de briser les cycles et de créer des racines en
+            elle-même. Son parcours allie corps, âme et esprit, avec des formations en Reiki, Ayurveda, nutrition
+            intégrative et développement personnel.") ?>
         </p>
         <p>
           <?= _("Passionnée par la nature, par la nutrition consciente comme geste d’amour, par la beauté sous toutes ses
-          formes et par les émotions qui nous habitent, elle a trouvé dans le chemin de la maternité son plus grand
-          miroir et sa transformation la plus profonde. Elle croit que la guérison s’épanouit dans le jardin secret de
-          l’amour de soi, où chaque femme est à la fois la fleur et la graine de sa propre transformation.") ?>
+            formes et par les émotions qui nous habitent, elle a trouvé dans le chemin de la maternité son plus grand
+            miroir et sa transformation la plus profonde. Elle croit que la guérison s’épanouit dans le jardin secret de
+            l’amour de soi, où chaque femme est à la fois la fleur et la graine de sa propre transformation.") ?>
         </p>
       </section>
     </div>
@@ -781,7 +787,7 @@ $langLink = match ($lang) {
     <h2>Acheter le livre</h2>
 
     <div class="content">
-      <img src="/image/book.png" alt="image du livre">
+      <img fetchpriority="high" src="/image/book-<?= $lang ?>.webp" alt="image du livre">
       <div class="description">
         <p>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
@@ -798,3 +804,5 @@ $langLink = match ($lang) {
     </div>
   </div>
 </body>
+
+</html>

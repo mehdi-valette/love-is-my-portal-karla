@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 
+<html lang="fr">
+
 <head>
-  <meta charset="utf-8">
+  <meta charset=" utf-8">
+  <title>L'amour est Ton Portail</title>
 
   <style>
     :root {
@@ -74,20 +77,22 @@
 </head>
 
 <body>
-  <div>
-    <h1>Escolha seu idioma</h1>
-    <h1>Choisis ta langue</h1>
+  <div role="main">
+    <h1 lang="pt">Escolha seu idioma</h1>
+    <h1 lang="fr">Choisis ta langue</h1>
 
-    <div class="languages">
-      <a class="language" href="/pt">
-        <img src="/image/book.png" />
+    <nav class="languages">
+      <a lang="pt" class="language" href="/pt">
+        <img fetchpriority="high" src="/image/book-pt.webp" alt="Capa do livro em português" />
         Português
       </a>
 
-      <a class="language" href="/fr">
-        <img src="/image/book.png" />
+      <a lang="fr" class="language" href="/fr">
+        <img fetchpriority="high" src="/image/book-fr.webp" alt="couverture du livre en version française" />
         Français
       </a>
-    </div>
+    </nav>
   </div>
 </body>
+
+</html>
