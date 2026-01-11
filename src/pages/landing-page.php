@@ -23,12 +23,13 @@ $otherLang = match ($lang) {
       --header-bottom-color-dark: #a44a5c;
       --header-bottom-color-light: #a54e61;
       --blurer-height: 3rem;
+      --button-bg-color: hsl(351, 100%, 90%);
+      --button-hover-bg-color: hsl(351, 100%, 80%);
+      --button-transform: scale(1, 1);
+      --button-hover-transform: scale(1.01, 1.1);
     }
 
     .about-author {
-      background-color: var(--header-top-color-dark);
-      padding: 5rem 0;
-
       .content {
         align-items: center;
         display: flex;
@@ -59,10 +60,16 @@ $otherLang = match ($lang) {
       margin-top: calc(var(--blurer-height) * -1);
     }
 
-    .book-content {
-      padding: 5rem 0;
-      background-color: var(--header-top-color-light);
+    body>section {
+      padding: 3rem 1rem;
+      background-color: var(--header-top-color-dark);
 
+      &:nth-child(odd) {
+        background-color: var(--header-top-color-light);
+      }
+    }
+
+    .book-content {
       .topics {
         display: flex;
         flex-wrap: wrap;
@@ -78,13 +85,9 @@ $otherLang = match ($lang) {
     }
 
     .book-preview {
-      padding: 5rem 0;
-      background-color: var(--header-top-color-dark);
-
       .pages {
         display: flex;
-        gap: 5rem;
-        padding: 0 5rem;
+        gap: 3rem;
         overflow: auto;
 
         .page {
@@ -107,15 +110,15 @@ $otherLang = match ($lang) {
       display: inline-block;
       text-transform: uppercase;
       font-weight: bold;
-      background-color: hsl(351, 100%, 90%);
+      background-color: var(--button-bg-color);
       border-radius: .5rem;
       border: none;
       color: black;
       cursor: pointer;
-      font-size: calc(var(--fs-default) * 1.1);
+      font-size: 1.1rem;
       padding: .8rem;
       text-decoration: none;
-      transform: scale(1, 1);
+      transform: var(--button-transform);
       transition-property: transform background-color;
       transition: .5s linear;
       width: 100%;
@@ -123,15 +126,12 @@ $otherLang = match ($lang) {
       text-align: center;
 
       &:hover {
-        background-color: hsl(351, 100%, 80%);
-        transform: scale(1.01, 1.1);
+        background-color: var(--button-hover-bg-color);
+        transform: var(--button-hover-transform);
       }
     }
 
     .buy {
-      background-color: var(--header-top-color-light);
-      padding: 5rem 0;
-
       .content {
         margin: auto;
         display: flex;
@@ -232,9 +232,6 @@ $otherLang = match ($lang) {
     }
 
     .readers-reviews {
-      padding: 5rem;
-      background-color: var(--header-top-color-light);
-
       .reviews {
         display: flex;
         gap: 5rem;
@@ -242,7 +239,7 @@ $otherLang = match ($lang) {
         overflow: auto;
 
         .review {
-          min-width: 30rem;
+          min-width: 20rem;
 
           p,
           textarea {
@@ -262,13 +259,39 @@ $otherLang = match ($lang) {
             gap: 1rem;
           }
 
+          input {
+            padding: .3rem;
+            background-color: var(--header-top-color-dark);
+            display: inline-block;
+          }
+
+          button {
+            margin-left: 1rem;
+            background-color: var(--button-bg-color);
+            transform: var(--button-transform);
+            border-radius: .5rem;
+            border: none;
+            color: black;
+            cursor: pointer;
+            text-decoration: none;
+            transform: var(--button-transform);
+            transition-property: transform background-color;
+            transition: .5s linear;
+            text-align: center;
+            padding: .3rem;
+            font-size: 1.1rem;
+
+            &:hover {
+              background-color: var(--button-hover-bg-color);
+              transform: var(--button-hover-transform);
+            }
+          }
         }
       }
     }
 
     @media all and (max-width: 1000px) and (orientation: portrait) {
       .about-author {
-
         .content {
           section {
             width: 90%;
@@ -278,8 +301,12 @@ $otherLang = match ($lang) {
 
       .book-content {
         .topics {
+          width: 90%;
+          margin: auto;
+          padding: 0;
+
           .topic {
-            width: 90%;
+            width: 100%;
           }
         }
       }
@@ -305,9 +332,16 @@ $otherLang = match ($lang) {
         }
       }
 
-      img,
-      img.boxed {
+      img {
         width: 90%;
+      }
+
+      .readers-reviews {
+        .reviews {
+          .review {
+            min-width: 90%;
+          }
+        }
       }
     }
   </style>
@@ -373,7 +407,7 @@ $otherLang = match ($lang) {
     </div>
   </div>
 
-  <div class="book-content">
+  <section class="book-content">
     <h2><?= _("Contenu du livre") ?></h2>
 
     <div class="topics">
@@ -407,14 +441,14 @@ $otherLang = match ($lang) {
         </p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="about-author">
+  <section class="about-author">
     <h2>
       <?= _("À propos de l'autrice") ?>
     </h2>
 
-    <div class="content">
+    <section class="content">
       <img fetchpriority="high" src="/image/about.webp" alt="photo de Karla" class="boxed">
       <section>
         <h3>Karla Alves</h3>
@@ -433,17 +467,17 @@ $otherLang = match ($lang) {
             l’amour de soi, où chaque femme est à la fois la fleur et la graine de sa propre transformation.") ?>
         </p>
       </section>
-    </div>
-  </div>
+    </section>
+  </section>
 
-  <div class="readers-reviews">
+  <section class="readers-reviews">
     <h2><?= _("Avis des lectrices") ?></h2>
 
     <div class="reviews">
       <div class="review">
         <form>
-          <textarea placeholder="<?= _("Écrivez votre avis ici") ?>"></textarea>
-          <input placeholder="<?= _("Prénom nom") ?>">
+          <textarea required placeholder="<?= _("Écrivez votre avis ici") ?>"></textarea>
+          <input required placeholder="<?= _("Prénom nom") ?>">
           <button type="submit"><?= _("Envoyer") ?></button>
         </form>
       </div>
@@ -520,9 +554,9 @@ $otherLang = match ($lang) {
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="book-preview">
+  <section class="book-preview">
     <h2>Aperçu du livre</h2>
 
     <div class="pages">
@@ -781,9 +815,9 @@ $otherLang = match ($lang) {
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="buy">
+  <section class="buy">
     <h2>Acheter le livre</h2>
 
     <div class="content">
@@ -802,7 +836,7 @@ $otherLang = match ($lang) {
         <a class="button" href="<?= $conf->get_payment_link($lang) ?>"><?= _("Commande maintenant") ?></a>
       </div>
     </div>
-  </div>
+  </section>
 </body>
 
 </html>
