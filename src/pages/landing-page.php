@@ -13,7 +13,7 @@ $otherLang = match ($lang) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>
-    <?= _("L'amour est Ton Portail") ?>
+    <?= _("L'amour est ton portail") ?>
   </title>
 
   <style>
@@ -23,12 +23,13 @@ $otherLang = match ($lang) {
       --header-bottom-color-dark: #a44a5c;
       --header-bottom-color-light: #a54e61;
       --blurer-height: 3rem;
+      --button-bg-color: hsl(351, 100%, 90%);
+      --button-hover-bg-color: hsl(351, 100%, 80%);
+      --button-transform: scale(1, 1);
+      --button-hover-transform: scale(1.01, 1.1);
     }
 
     .about-author {
-      background-color: var(--header-top-color-dark);
-      padding: 5rem 0;
-
       .content {
         align-items: center;
         display: flex;
@@ -59,35 +60,16 @@ $otherLang = match ($lang) {
       margin-top: calc(var(--blurer-height) * -1);
     }
 
-    .button {
-      display: inline-block;
-      text-transform: uppercase;
-      font-weight: bold;
-      background-color: hsl(351, 100%, 90%);
-      border-radius: .5rem;
-      border: none;
-      color: black;
-      cursor: pointer;
-      font-size: calc(var(--fs-default) * 1.1);
-      padding: .8rem;
-      text-decoration: none;
-      transform: scale(1, 1);
-      transition-property: transform background-color;
-      transition: .5s linear;
-      width: 100%;
-      margin: 3rem 0;
-      text-align: center;
+    body>section {
+      padding: 3rem 1rem;
+      background-color: var(--header-top-color-dark);
 
-      &:hover {
-        background-color: hsl(351, 100%, 80%);
-        transform: scale(1.01, 1.1);
+      &:nth-child(odd) {
+        background-color: var(--header-top-color-light);
       }
     }
 
     .book-content {
-      padding: 5rem 0;
-      background-color: var(--header-top-color-light);
-
       .topics {
         display: flex;
         flex-wrap: wrap;
@@ -103,13 +85,9 @@ $otherLang = match ($lang) {
     }
 
     .book-preview {
-      padding: 5rem 0;
-      background-color: var(--header-top-color-dark);
-
       .pages {
         display: flex;
-        gap: 5rem;
-        padding: 0 5rem;
+        gap: 3rem;
         overflow: auto;
 
         .page {
@@ -128,10 +106,33 @@ $otherLang = match ($lang) {
       }
     }
 
-    .buy {
-      background-color: var(--header-top-color-light);
-      padding: 5rem 0;
+    .button {
+      display: inline-block;
+      box-sizing: border-box;
+      text-transform: uppercase;
+      font-weight: bold;
+      background-color: var(--button-bg-color);
+      border-radius: .5rem;
+      border: none;
+      color: black;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: .8rem;
+      text-decoration: none;
+      transform: var(--button-transform);
+      transition-property: transform background-color;
+      transition: .5s linear;
+      width: 100%;
+      margin: 3rem 0;
+      text-align: center;
 
+      &:hover {
+        background-color: var(--button-hover-bg-color);
+        transform: var(--button-hover-transform);
+      }
+    }
+
+    .buy {
       .content {
         margin: auto;
         display: flex;
@@ -188,6 +189,7 @@ $otherLang = match ($lang) {
 
       h1 {
         margin-top: 0;
+        text-transform: uppercase;
       }
 
       h2 {
@@ -224,10 +226,6 @@ $otherLang = match ($lang) {
         border-radius: 0.5rem;
         box-shadow: 0 0 5px white;
       }
-
-      &.miniature {
-        width: 60px;
-      }
     }
 
     p {
@@ -235,9 +233,6 @@ $otherLang = match ($lang) {
     }
 
     .readers-reviews {
-      padding: 5rem;
-      background-color: var(--header-top-color-light);
-
       .reviews {
         display: flex;
         gap: 5rem;
@@ -245,27 +240,61 @@ $otherLang = match ($lang) {
         overflow: auto;
 
         .review {
-          min-width: 30rem;
+          min-width: 20rem;
 
-          p {
+          p,
+          textarea {
+            margin: 1rem 0;
             padding: 1rem;
             border-radius: .5rem;
             background-color: var(--header-top-color-dark);
+            height: 10rem;
+            overflow: auto;
+            width: 100%;
           }
 
-          .author {
+          .author,
+          input {
             display: flex;
             align-items: center;
             gap: 1rem;
           }
 
+          input {
+            padding: .3rem;
+            background-color: var(--header-top-color-dark);
+            display: inline-block;
+            vertical-align: middle;
+          }
+
+          button {
+            margin-left: 1rem;
+            background-color: var(--button-bg-color);
+            transform: var(--button-transform);
+            border-radius: .5rem;
+            border: none;
+            color: black;
+            cursor: pointer;
+            text-decoration: none;
+            transform: var(--button-transform);
+            transition-property: transform background-color;
+            transition: .5s linear;
+            text-align: center;
+            padding: .3rem;
+            font-size: 1.1rem;
+            vertical-align: middle;
+
+            &:hover {
+              background-color: var(--button-hover-bg-color);
+              transform: var(--button-hover-transform);
+            }
+          }
         }
       }
     }
 
     @media all and (max-width: 1000px) and (orientation: portrait) {
       .about-author {
-
         .content {
           section {
             width: 90%;
@@ -273,14 +302,14 @@ $otherLang = match ($lang) {
         }
       }
 
-      body {
-        font-size: 2rem;
-      }
-
       .book-content {
         .topics {
+          width: 90%;
+          margin: auto;
+          padding: 0;
+
           .topic {
-            width: 90%;
+            width: 100%;
           }
         }
       }
@@ -306,9 +335,16 @@ $otherLang = match ($lang) {
         }
       }
 
-      img,
-      img.boxed {
+      img {
         width: 90%;
+      }
+
+      .readers-reviews {
+        .reviews {
+          .review {
+            min-width: 90%;
+          }
+        }
       }
     }
   </style>
@@ -329,12 +365,12 @@ $otherLang = match ($lang) {
 
       <section>
         <h1>
-          <?= _("L'amour est Ton Portail") ?>
+          <?= _("L'amour est ton portail") ?>
           <span class="author"><?= _("par Karla Alves") ?></span>
         </h1>
 
         <div>
-          <h2><?= _("TOUTES NOUS PORTONS UNE HISTOIRE UNIQUE QUI NOUS REND SPÉCIALES.") ?></h2>
+          <h2><?= _("Toutes nous portons une histoire unique qui nous rend spéciales.") ?></h2>
           <p>
             <?= _("Ce livre est un témoignage de vie, de transformation et de renaissance.
               Avec délicatesse et authenticité, je partage mon parcours : d’une enfance marquée par la douleur à la
@@ -374,7 +410,7 @@ $otherLang = match ($lang) {
     </div>
   </div>
 
-  <div class="book-content">
+  <section class="book-content">
     <h2><?= _("Contenu du livre") ?></h2>
 
     <div class="topics">
@@ -408,14 +444,14 @@ $otherLang = match ($lang) {
         </p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="about-author">
+  <section class="about-author">
     <h2>
       <?= _("À propos de l'autrice") ?>
     </h2>
 
-    <div class="content">
+    <section class="content">
       <img fetchpriority="high" src="/image/about.webp" alt="photo de Karla" class="boxed">
       <section>
         <h3>Karla Alves</h3>
@@ -434,14 +470,21 @@ $otherLang = match ($lang) {
             l’amour de soi, où chaque femme est à la fois la fleur et la graine de sa propre transformation.") ?>
         </p>
       </section>
-    </div>
-  </div>
+    </section>
+  </section>
 
-  <div class="readers-reviews">
-    <h2>Readers reviews</h2>
+  <section class="readers-reviews">
+    <h2><?= _("Avis des lectrices") ?></h2>
 
     <div class="reviews">
       <div class="review">
+        <form>
+          <textarea required placeholder="<?= _("Écrivez votre avis ici") ?>"></textarea>
+          <input required placeholder="<?= _("Prénom nom") ?>">
+          <button type="submit"><?= _("Envoyer") ?></button>
+        </form>
+      </div>
+      <div class="review">
         <p>
           Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
           placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
@@ -450,7 +493,6 @@ $otherLang = match ($lang) {
           himenaeos.
         </p>
         <div class="author">
-          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -463,7 +505,6 @@ $otherLang = match ($lang) {
           himenaeos.
         </p>
         <div class="author">
-          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -476,7 +517,6 @@ $otherLang = match ($lang) {
           himenaeos.
         </p>
         <div class="author">
-          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -489,7 +529,6 @@ $otherLang = match ($lang) {
           himenaeos.
         </p>
         <div class="author">
-          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -502,7 +541,6 @@ $otherLang = match ($lang) {
           himenaeos.
         </p>
         <div class="author">
-          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -515,14 +553,13 @@ $otherLang = match ($lang) {
           himenaeos.
         </p>
         <div class="author">
-          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="book-preview">
+  <section class="book-preview">
     <h2>Aperçu du livre</h2>
 
     <div class="pages">
@@ -781,9 +818,9 @@ $otherLang = match ($lang) {
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="buy">
+  <section class="buy">
     <h2>Acheter le livre</h2>
 
     <div class="content">
@@ -802,7 +839,7 @@ $otherLang = match ($lang) {
         <a class="button" href="<?= $conf->get_payment_link($lang) ?>"><?= _("Commande maintenant") ?></a>
       </div>
     </div>
-  </div>
+  </section>
 </body>
 
 </html>
