@@ -36,7 +36,7 @@ export class LandingPage {
 
   async gotoPaymentBottomPage() {
     await this.page
-      .locator("div")
+      .locator("section")
       .filter({ hasText: "Acheter le livre Lorem ipsum" })
       .getByRole("link")
       .click();
