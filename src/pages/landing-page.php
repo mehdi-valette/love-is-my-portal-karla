@@ -108,6 +108,7 @@ $otherLang = match ($lang) {
 
     .button {
       display: inline-block;
+      box-sizing: border-box;
       text-transform: uppercase;
       font-weight: bold;
       background-color: var(--button-bg-color);
@@ -115,7 +116,7 @@ $otherLang = match ($lang) {
       border: none;
       color: black;
       cursor: pointer;
-      font-size: 1.1rem;
+      font-size: 1rem;
       padding: .8rem;
       text-decoration: none;
       transform: var(--button-transform);
@@ -263,6 +264,7 @@ $otherLang = match ($lang) {
             padding: .3rem;
             background-color: var(--header-top-color-dark);
             display: inline-block;
+            vertical-align: middle;
           }
 
           button {
@@ -280,6 +282,7 @@ $otherLang = match ($lang) {
             text-align: center;
             padding: .3rem;
             font-size: 1.1rem;
+            vertical-align: middle;
 
             &:hover {
               background-color: var(--button-hover-bg-color);
