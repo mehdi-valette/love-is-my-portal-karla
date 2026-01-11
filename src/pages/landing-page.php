@@ -13,7 +13,7 @@ $otherLang = match ($lang) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>
-    <?= _("L'amour est Ton Portail") ?>
+    <?= _("L'amour est ton portail") ?>
   </title>
 
   <style>
@@ -59,31 +59,6 @@ $otherLang = match ($lang) {
       margin-top: calc(var(--blurer-height) * -1);
     }
 
-    .button {
-      display: inline-block;
-      text-transform: uppercase;
-      font-weight: bold;
-      background-color: hsl(351, 100%, 90%);
-      border-radius: .5rem;
-      border: none;
-      color: black;
-      cursor: pointer;
-      font-size: calc(var(--fs-default) * 1.1);
-      padding: .8rem;
-      text-decoration: none;
-      transform: scale(1, 1);
-      transition-property: transform background-color;
-      transition: .5s linear;
-      width: 100%;
-      margin: 3rem 0;
-      text-align: center;
-
-      &:hover {
-        background-color: hsl(351, 100%, 80%);
-        transform: scale(1.01, 1.1);
-      }
-    }
-
     .book-content {
       padding: 5rem 0;
       background-color: var(--header-top-color-light);
@@ -125,6 +100,31 @@ $otherLang = match ($lang) {
             background-color: rgb(from var(--header-top-color-light) r g b / 0.7);
           }
         }
+      }
+    }
+
+    .button {
+      display: inline-block;
+      text-transform: uppercase;
+      font-weight: bold;
+      background-color: hsl(351, 100%, 90%);
+      border-radius: .5rem;
+      border: none;
+      color: black;
+      cursor: pointer;
+      font-size: calc(var(--fs-default) * 1.1);
+      padding: .8rem;
+      text-decoration: none;
+      transform: scale(1, 1);
+      transition-property: transform background-color;
+      transition: .5s linear;
+      width: 100%;
+      margin: 3rem 0;
+      text-align: center;
+
+      &:hover {
+        background-color: hsl(351, 100%, 80%);
+        transform: scale(1.01, 1.1);
       }
     }
 
@@ -188,6 +188,7 @@ $otherLang = match ($lang) {
 
       h1 {
         margin-top: 0;
+        text-transform: uppercase;
       }
 
       h2 {
@@ -224,10 +225,6 @@ $otherLang = match ($lang) {
         border-radius: 0.5rem;
         box-shadow: 0 0 5px white;
       }
-
-      &.miniature {
-        width: 60px;
-      }
     }
 
     p {
@@ -247,13 +244,19 @@ $otherLang = match ($lang) {
         .review {
           min-width: 30rem;
 
-          p {
+          p,
+          textarea {
+            margin: 1rem 0;
             padding: 1rem;
             border-radius: .5rem;
             background-color: var(--header-top-color-dark);
+            height: 10rem;
+            overflow: auto;
+            width: 100%;
           }
 
-          .author {
+          .author,
+          input {
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -271,10 +274,6 @@ $otherLang = match ($lang) {
             width: 90%;
           }
         }
-      }
-
-      body {
-        font-size: 2rem;
       }
 
       .book-content {
@@ -329,12 +328,12 @@ $otherLang = match ($lang) {
 
       <section>
         <h1>
-          <?= _("L'amour est Ton Portail") ?>
+          <?= _("L'amour est ton portail") ?>
           <span class="author"><?= _("par Karla Alves") ?></span>
         </h1>
 
         <div>
-          <h2><?= _("TOUTES NOUS PORTONS UNE HISTOIRE UNIQUE QUI NOUS REND SPÉCIALES.") ?></h2>
+          <h2><?= _("Toutes nous portons une histoire unique qui nous rend spéciales.") ?></h2>
           <p>
             <?= _("Ce livre est un témoignage de vie, de transformation et de renaissance.
               Avec délicatesse et authenticité, je partage mon parcours : d’une enfance marquée par la douleur à la
@@ -438,10 +437,17 @@ $otherLang = match ($lang) {
   </div>
 
   <div class="readers-reviews">
-    <h2>Readers reviews</h2>
+    <h2><?= _("Avis des lectrices") ?></h2>
 
     <div class="reviews">
       <div class="review">
+        <form>
+          <textarea placeholder="<?= _("Écrivez votre avis ici") ?>"></textarea>
+          <input placeholder="<?= _("Prénom nom") ?>">
+          <button type="submit"><?= _("Envoyer") ?></button>
+        </form>
+      </div>
+      <div class="review">
         <p>
           Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem
           placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar
@@ -450,7 +456,6 @@ $otherLang = match ($lang) {
           himenaeos.
         </p>
         <div class="author">
-          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -463,7 +468,6 @@ $otherLang = match ($lang) {
           himenaeos.
         </p>
         <div class="author">
-          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -476,7 +480,6 @@ $otherLang = match ($lang) {
           himenaeos.
         </p>
         <div class="author">
-          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -489,7 +492,6 @@ $otherLang = match ($lang) {
           himenaeos.
         </p>
         <div class="author">
-          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -502,7 +504,6 @@ $otherLang = match ($lang) {
           himenaeos.
         </p>
         <div class="author">
-          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
@@ -515,7 +516,6 @@ $otherLang = match ($lang) {
           himenaeos.
         </p>
         <div class="author">
-          <img class="miniature" src="/image/karla.png" alt="photo de Tiago">
           <span>Tiago Silva</span>
         </div>
       </div>
