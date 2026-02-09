@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
 
-jobs:
+jobs: 
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
@@ -16,6 +16,9 @@ jobs:
         run: |
           sudo locale-gen fr_FR.utf8
           sudo locale-gen pt_PT.utf8
+
+      - name: Create directories
+        run: mkdir /etc/karla /var/lib/karla
 
       - name: Inject karla.conf file
         run: |
