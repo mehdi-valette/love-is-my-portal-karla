@@ -1,4 +1,6 @@
 <?php
+include_once "../reviews.php";
+
 $otherLang = match ($lang) {
   "pt" => "fr",
   "fr" => "pt",

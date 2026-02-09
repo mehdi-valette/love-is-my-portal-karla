@@ -19,7 +19,7 @@ jobs:
 
       - name: Inject karla.conf file
         run: |
-          cat << EOF | sudo tee /etc/karla.conf > /dev/null
+          cat << EOF | sudo tee /etc/karla/karla.conf > /dev/null
           ${{ secrets.KARLA_CONF }}
           EOF
 
@@ -86,7 +86,7 @@ jobs:
           EOF
 
       - name: Transfer configuration file
-        run: rsync --inplace -e 'ssh -o StrictHostKeyChecking=no' $HOME/karla.conf githubactions@83.228.216.33:/etc/
+        run: rsync --inplace -e 'ssh -o StrictHostKeyChecking=no' $HOME/karla.conf githubactions@83.228.216.33:/etc/karla/karla.conf
 
       - name: Transfer website content
         run: rsync --recursive -e 'ssh -o StrictHostKeyChecking=no' src/ githubactions@83.228.216.33:/var/www/html
