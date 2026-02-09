@@ -18,7 +18,7 @@ jobs:
           sudo locale-gen pt_PT.utf8
 
       - name: Create directories
-        run: mkdir /etc/karla /var/lib/karla
+        run: sudo mkdir /etc/karla /var/lib/karla
 
       - name: Inject karla.conf file
         run: |
