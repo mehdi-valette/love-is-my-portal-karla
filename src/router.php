@@ -12,6 +12,9 @@ include_once "lang.php";
 $path = array_shift($path_variables);
 
 switch ($path) {
+  case "review":
+    include_once "pages/add-review.php";
+    break;
   case "payment-confirmed":
     include_once "pages/payment-confirmed.php";
     break;

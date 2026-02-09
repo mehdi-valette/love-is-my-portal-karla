@@ -1,6 +1,8 @@
 <?php
 include_once "conf.php";
 
+include_once "reviews.php";
+
 $lang_accepted = ["fr", "pt"];
 $domain = "main";
 bindtextdomain($domain, realpath("./") . DIRECTORY_SEPARATOR . "locale");
