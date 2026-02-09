@@ -28,7 +28,7 @@ jobs:
 
       - name: Start PHP server
         run: |
-          php -S 127.0.0.1:8080 -t src > /tmp/server.log 2>&1 &
+          sudo php -S 127.0.0.1:8080 -t src > /tmp/server.log 2>&1 &
 
       - name: Wait for site
         run: |
