@@ -5,7 +5,7 @@ class Conf
   private $paymentLinkFr;
   private $paymentLinkPt;
 
-  private $conf_path = "/etc/karla.conf";
+  private $conf_path = "/etc/karla/karla.conf";
   private $conf_key_payment_link_fr = "payment_link_fr";
   private $conf_key_payment_link_pt = "payment_link_pt";
 
